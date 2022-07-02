@@ -38,17 +38,24 @@ class Mcrud extends CI_Model{
       $query = $this->db->get();
       return $query;
 	}
+
     public function get_sub($id_kriteria)
 	{
-      return $this->db->get_where('subkriteria', array('id_kriteria'=>$id_kriteria))->result;
-      //return $query;
+      $query = $this->db->get_where('subkriteria', array('id_kriteria'=>$id_kriteria));
+      return $query;
+	}
 
-    // $query = $this->db->query("SELECT * FROM subkriteria WHERE id_kriteria = '$id_kriteria' ");
-    // var_dump($query);
-    //return $query->result();
-}
-
-
+    public function get_detailalternatif()
+	{
+      $this->db->select('detail_alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif');
+      $this->db->from('detail_alternatif');
+      $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif');      
+      $this->db->join('kriteria','kriteria.id_kriteria = detail_alternatif.id_kriteria');      
+      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria');      
+      $this->db->group_by('detail_alternatif.id_alternatif');      
+      $query = $this->db->get();
+      return $query;
+	}
 
 }
 

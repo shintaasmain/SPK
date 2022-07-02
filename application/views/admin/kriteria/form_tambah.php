@@ -35,7 +35,7 @@
                       </div>
                       <label for="inputEmail3" class="col-sm-3 cpl-form-label">Bobot</label>
                       <div class="col-sm-9 mb-4">
-                        <input type="number" class="form-control" id="inputEmail3" name="bobot" placeholder="">
+                        <input type="text" class="form-control" id="inputEmail3" name="bobot" placeholder="">
                         <?php echo form_error('bobot','<small style="color:#FD0707">','</small>'); ?>
                       </div>
                       <label class="col-sm-3">Jenis</label>
