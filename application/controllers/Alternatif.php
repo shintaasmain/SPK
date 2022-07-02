@@ -15,23 +15,64 @@ class Alternatif extends CI_Controller {
 		if(empty($this->session->userdata('username_admin'))){
 			redirect('login');
 		}
+		
+		$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
 		$data['alternatif']=$this->Mcrud->get_all_data('alternatif')->result();
+		$data['detail_alternatif']=$this->Mcrud->get_detailalternatif()->result();
 		$this->template->load('layout_admin', 'admin/alternatif/index',$data);
 		
 	}
 
-	
-    public function tambah(){
+	// TAMPIL FORM TAMBAH ALTERNATIF
+    public function tambahAlternatif(){
 		if(empty($this->session->userdata('username_admin'))){
 			redirect('login');
 		}
-		$data['alternatif'] = $this->Mcrud->get_all_data('alternatif')->result();
+
+		$this->template->load('layout_admin', 'admin/alternatif/form_tambahalternatif');
+    }
+
+	//  SIMPAN ALTERNATIF
+	public function simpan_alternatif(){
+
+		$nama_alternatif = $this->input->post('nama_alternatif');
+		$data = array(
+			'nama_alternatif' => $nama_alternatif,
+		);
+		$this->Mcrud->insert('alternatif', $data);
+		redirect('alternatif');
+	}
+
+	// TAMBAH KRITERA UNTUK SETIAP ALTERNATIF
+    public function tambah($id){
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
+		}
+
+		$dataWhere = array('id_alternatif'=>$id);
+		$data['alternatif'] = $this->Mcrud->get_by_id('alternatif',$dataWhere)->result();
 		$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
-		//$data['subkriteria'] = $this->Mcrud->get_sub()->result();
 
 		//var_dump($data);
 		$this->template->load('layout_admin', 'admin/alternatif/form_tambah',$data);
     }
+
+	// SIMPAN TAMBAH KRITERIA UNTUK ALTERNATIF
+		public function simpan_detailAlternatif(){
+		
+		$id_alternatif = $this->input->post('id_alternatif');
+		$id_kriteria = $this->input->post('kriteria');
+		$id_subkriteria = $this->input->post('subkriteria');
+		$data = array(
+			'id_alternatif' => $id_alternatif,
+			'id_kriteria' => $id_kriteria,
+			'id_subkriteria' => $id_subkriteria,
+		);
+		$this->Mcrud->insert('detail_alternatif', $data);
+		redirect('alternatif');
+	}
+
+
 
 	public function simpan(){
 		$this->load->library('form_validation');
@@ -154,6 +195,15 @@ class Alternatif extends CI_Controller {
 		);
 		$this->Mcrud->update('subkriteria', $dataUpdate, 'id_subkriteria',$id_subkriteria);
 		redirect('kriteria/getsubkriteria/'.$id_kriteria);
+	}
+
+
+	public function kriteria()
+	{
+		$id = $this->input->post('id');
+		$data = $this->Mcrud->get_sub($id);
+		//var_dump($data);
+		$this->output->set_content_type('application/json')->set_output( json_encode($data));
 	}
 
 

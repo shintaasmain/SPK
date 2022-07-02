@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
+  <!-- <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css"> -->
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?php echo base_url('assets/admin/assets/css/style.css');?>">
@@ -149,11 +149,11 @@
   <script src="<?php echo base_url('assets/admin/assets/js/stisla.js');?>"></script>
 
   <!-- JS Libraies -->
-  <script src="../node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+  <!-- <script src="../node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
   <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../node_modules/summernote/dist/summernote-bs4.js"></script>
-  <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+  <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script> -->
 
   <!-- Template JS File -->
   <script src="<?php echo base_url('assets/admin/assets/js/scripts.js');?>"></script>
@@ -200,6 +200,7 @@ $('#kriteria').change(function(){
     $('#logoutModal').modal();
   }
 </script>
+
 <!-- Logout MODAL -->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

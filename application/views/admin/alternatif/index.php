@@ -16,7 +16,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <a href="<?php echo site_url('alternatif/tambah');?>" class="btn btn-primary">
+                    <a href="<?php echo site_url('alternatif/tambahAlternatif');?>" class="btn btn-primary">
                     Tambah Alternatif</a>
                   </div>
                   <div class="card-body">
@@ -25,6 +25,9 @@
                         <tr>
                           <th>No</th>
                           <th>Alternatif</th>
+                          <?php foreach ($kriteria as $k):?>
+                            <th><?= $k->nama_kriteria?></th>
+                          <?php endforeach;?>
                           <th>Action</th>
                         </tr>
                         <?php 
@@ -33,10 +36,13 @@
                           <tr>
                           <td><?php echo $no++;?></td>
                           <td><?php echo $item->nama_alternatif;?></td>
+                          <?php foreach ($detail_alternatif as $Detail):?>
+                            <th><?= $Detail->nama_subkriteria?></th>
+                          <?php endforeach;?>
                         <td>
-                        <a href="<?php echo site_url('alternatif/getalternatif/'.$item->id_alternatif);?>" class="btn btn-primary">Lihat</a>
-                        <a href="<?php echo site_url('kriteria/getid/'.$item->id_kriteria);?>" class="btn btn-warning">Edit</a>
-                        <a onclick="deleteConfirm('<?php echo site_url('kriteria/hapus/'.$item->id_kriteria);?>')" href="#!" class="btn btn-danger">Hapus</a></td>
+                        <a href="<?php echo site_url('alternatif/tambah/'.$item->id_alternatif);?>" class="btn btn-primary">kriteria</a>
+                        <a href="<?php echo site_url('kriteria/getid/'.$item->id_alternatif);?>" class="btn btn-warning">Edit</a>
+                        <a onclick="deleteConfirm('<?php echo site_url('kriteria/hapus/'.$item->id_alternatif);?>')" href="#!" class="btn btn-danger">Hapus</a></td>
                         </tr>
                         <?php endforeach ; ?>
                       </table>

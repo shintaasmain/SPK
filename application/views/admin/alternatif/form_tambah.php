@@ -14,40 +14,22 @@
 			<div class="row">
 
 				<div class="col-12 col-md-6">
-					<form method="post" action="<?php echo site_url('alternatif/simpan');?>">
+					<form method="post" action="<?php echo site_url('alternatif/simpan_detailAlternatif');?>">
 						<div class="card">
 							<div class="card">
 								<div class="card-header">
-									<h4>Form Tambah Alternatif</h4>
+									<h4>Form Tambah Kriteria Untuk Alternatif</h4>
 								</div>
 								<div class="card-body">
 									<div class="form-group row">
-										<label for="inputEmail3" class="col-sm-4 cpl-form-label">Nama Alternatif</label>
-										<div class="col-sm-9 mb-4">
-											<input type="text" class="form-control" id="inputEmail3" name="nama_alternatif" placeholder="">
-										</div>
-										<!-- <div class="col-sm-9">
-											<ul class="navbar-nav">
-												<?php foreach ($kriteria as $k):?>
-												<li class="nav-item">
-													<h href="#" class="nav-link"><span><?= $k->nama_kriteria ?></span></h>
-													<select data-width="150" class="form-control">
-														<?php foreach ($subkriteria as $i): ?>
-														<option value="<?= $i->id_kriteria?>"><?= $i->nama_subkriteria?></option>
-														<?php endforeach; ?>
-													</select>
-													<input type="text" class="form-control" id="inputEmail3" name="nama_alternatif"
-														placeholder="">
-													<?php endforeach; ?>
-												</li>
-											</ul>
-										</div> -->
+										<?php foreach ($alternatif as $a):?>
+										<input type="hidden" class="form-control" id="inputEmail3" name="id_alternatif" placeholder="" value="<?= $a->id_alternatif?>">
+										<?php endforeach;?>
 									</div>
-									<form>
 										<div class="form-group">
 											<label>Kriteria</label>
 											<select class="form-control" name="kriteria" id="kriteria" required>
-												<option value="">No Selected</option>
+												<option value="">Pilih....</option>
 												<?php foreach($kriteria as $row):?>
 												<option value="<?php echo $row->id_kriteria;?>"><?php echo $row->nama_kriteria;?></option>
 												<?php endforeach;?>
@@ -56,11 +38,8 @@
 										<div class="form-group">
 											<label>Sub Kriteria</label>
 											<select class="form-control" id="subkriteria" name="subkriteria" required>
-												<option>No Selected</option>
-
 											</select>
 										</div>
-									</form>
 								</div>
 								<div class="card-footer">
 									<button type="submit" class="btn btn-primary">Simpan</button>
