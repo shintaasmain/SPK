@@ -175,8 +175,7 @@ class Alternatif extends CI_Controller {
 	public function get_sub_kriteria()
 	{
 		$id_kriteria = $this->input->post('id', TRUE);
-		$data = $this->Mcrud->get_sub($id_kriteria)->result();
-		//var_dump($this->Mcrud);
+		$data = $this->Mcrud->get_sub($id_kriteria)->result  ();
 		echo json_encode($data);
 	}
 	
