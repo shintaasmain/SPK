@@ -27,7 +27,7 @@ class Alternatif extends CI_Controller {
 		}
 		$data['alternatif'] = $this->Mcrud->get_all_data('alternatif')->result();
 		$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
-		$data['subkriteria'] = $this->Mcrud->get_subkriteria()->result();
+		//$data['subkriteria'] = $this->Mcrud->get_subkriteria()->result();
 
 		//var_dump($data);
 		$this->template->load('layout_admin', 'admin/alternatif/form_tambah',$data);
@@ -154,6 +154,15 @@ class Alternatif extends CI_Controller {
 		);
 		$this->Mcrud->update('subkriteria', $dataUpdate, 'id_subkriteria',$id_subkriteria);
 		redirect('kriteria/getsubkriteria/'.$id_kriteria);
+	}
+
+
+	public function kriteria()
+	{
+		$id = $this->input->post('id');
+		$data = $this->Mcrud->get_sub($id);
+		//var_dump($data);
+		$this->output->set_content_type('application/json')->set_output( json_encode($data));
 	}
 
 
