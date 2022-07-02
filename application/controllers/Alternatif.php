@@ -12,8 +12,8 @@ class Alternatif extends CI_Controller {
 
 	public function index()
 	{
-		if(empty($this->session->userdata('username'))){
-			redirect('admin');
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
 		}
 		$data['alternatif']=$this->Mcrud->get_all_data('alternatif')->result();
 		$this->template->load('layout_admin', 'admin/alternatif/index',$data);
@@ -22,12 +22,12 @@ class Alternatif extends CI_Controller {
 
 	
     public function tambah(){
-        if(empty($this->session->userdata('username'))){
-			redirect('admin');
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
 		}
 		$data['alternatif'] = $this->Mcrud->get_all_data('alternatif')->result();
 		$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
-		$data['subkriteria'] = $this->Mcrud->get_subkriteria()->result();
+		//$data['subkriteria'] = $this->Mcrud->get_sub()->result();
 
 		//var_dump($data);
 		$this->template->load('layout_admin', 'admin/alternatif/form_tambah',$data);
@@ -94,8 +94,8 @@ class Alternatif extends CI_Controller {
 	// SUB KRITERIA
 
 	public function getsubkriteria($id){
-		if(empty($this->session->userdata('username'))){
-			redirect('admin');
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
 		}
 		$dataWhere = array('id_kriteria'=>$id);
 		$data['kriteria'] = $this->Mcrud->get_by_id('kriteria', $dataWhere)->row_object();
@@ -106,8 +106,8 @@ class Alternatif extends CI_Controller {
 	}
 
 	public function tambah_subkriteria($id){
-        if(empty($this->session->userdata('username'))){
-			redirect('admin');
+        if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
 		}
 		$dataWhere = array('id_kriteria'=>$id);
 		$data['kriteria'] = $this->Mcrud->get_by_id('kriteria', $dataWhere)->row_object();
@@ -132,8 +132,8 @@ class Alternatif extends CI_Controller {
 	}
 
 	public function getidsubkriteria($id){
-		if(empty($this->session->userdata('username'))){
-			redirect('admin');
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
 		}
 		$dataWhere = array('id_subkriteria'=>$id);
 		//$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->row_object();
@@ -170,6 +170,14 @@ class Alternatif extends CI_Controller {
 		$where = array('id_subkriteria' => $idkriteria);
 		$this->Mcrud->delete($where,'subkriteria');
 		redirect('kriteria/getsubkriteria/'.$idkriteria);
+	}
+
+	public function get_sub_kriteria()
+	{
+		$id_kriteria = $this->input->post('id', TRUE);
+		$data = $this->Mcrud->get_sub($id_kriteria)->result();
+		//var_dump($this->Mcrud);
+		echo json_encode($data);
 	}
 	
 }

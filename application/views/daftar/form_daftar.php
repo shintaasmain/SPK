@@ -28,7 +28,7 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-header"><h4>Daftar</h4></div>
 
               <div class="card-body">
 
@@ -48,38 +48,59 @@
 						</div>
 						<?php } ?>
 
-                <form method="POST" action="<?php echo site_url('login/aksi_login');?>" class="needs-validation" novalidate="">
-                  <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" class="form-control" name="username_admin" tabindex="1" required autofocus>
-                    <div class="invalid-feedback">
-                      Please fill in your username
-                    </div>
-                  </div>
+                  <form method="POST" action="<?= base_url('daftar/aksi_daftar') ?>" class="needs-validation"
+							novalidate="">
+							<div class="row">
+								<div class="form-group col-12">
+									<label for="nama_admin">Nama Lengkap</label>
+									<input id="nama_admin" type="text" class="form-control" name="nama_admin" autofocus required>
+									<div class="invalid-feedback">
+										Nama lengkap tidak boleh kosong !
+									</div>
+								</div>
+							</div>
 
-                  <div class="form-group">
-                    <div class="d-block">
-                    	<label for="password_admin" class="control-label">Password</label>
-                      <!-- <div class="float-right">
-                        <a href="auth-forgot-password.html" class="text-small">
-                          Forgot Password?
-                        </a>
-                      </div> -->
-                    </div>
-                    <input id="pass_admin" type="password" class="form-control" name="pass_admin" tabindex="2" required>
-                    <div class="invalid-feedback">
-                      please fill in your password
-                    </div>
-                  </div>
+							<div class="form-group">
+								<label for="username_admin">Username</label>
+								<input id="username_admin" type="text" class="form-control" name="username_admin" required>
+								<div class="invalid-feedback">
+									Username tidak boleh kosong !
+								</div>
+							</div>
 
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Login
-                    </button>
-                  </div>
-                </form>
+							<div class="row">
+								<div class="form-group col-12">
+									<label for="pass_admin" class="d-block">Password</label>
+									<input id="pass_admin" type="password" class="form-control pwstrength"
+										data-indicator="pwindicator" name="pass_admin" required>
+									<div class="invalid-feedback">
+										Password tidak boleh kosong !
+									</div>
+									<div id="pwindicator" class="pwindicator">
+										<div class="bar"></div>
+										<div class="label"></div>
+									</div>
+								</div>
+								
+							</div>
+                     <div class="row">
+                     <div class="form-group col-12">
+									<label for="password2" class="d-block">Password Confirmation</label>
+									<input id="password2" type="password" class="form-control" name="password_confirm" required>
+									<div class="invalid-feedback">
+										Password Confirmation tidak boleh kosong !
+									</div>
+								</div>
+                     </div>
 
-                <div class="col-md-12">Belum Punya Akun ? <a href="<?= base_url('daftar') ?>">Daftar Sekarang</a></div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-lg btn-block">
+									Daftar
+								</button>
+							</div>
+						</form>
+
+                <div class="col-md-12">Sudah Punya Akun ? <a href="<?= base_url('login') ?>">Masuk Sekarang</a></div>
 
               </div>
             </div>
