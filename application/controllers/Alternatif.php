@@ -17,8 +17,8 @@ class Alternatif extends CI_Controller {
 		}
 		
 		$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
-		$data['alternatif']=$this->Mcrud->get_all_data('alternatif')->result();
-		$data['detail_alternatif']=$this->Mcrud->get_detailalternatif()->result();
+		
+		$data['alternatif']=$this->Mcrud->get_detailalternatif()->result();
 		$this->template->load('layout_admin', 'admin/alternatif/index',$data);
 		
 	}
