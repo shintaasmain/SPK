@@ -29,8 +29,9 @@
 
      						<div class="card-body">
      							<div class="table-responsive">
-     								<table class="table table-bordered table-md">
-     									<tr>
+     								<table class="table table-striped table-md" id="table-1">
+										<thead>
+											<tr>
      										<th>No</th>
      										<th>Kode Kriteria</th>
      										<th>Nama Kriteria</th>
@@ -38,7 +39,9 @@
      										<th>Jenis</th>
      										<th>Action</th>
      									</tr>
-     									<?php 
+										</thead>
+										<tbody>
+										<?php 
                         $no = 1;
                         foreach ($kriteria as $item): ?>
      									<tr>
@@ -55,6 +58,9 @@
      												class="btn btn-primary">Sub Kriteria</a></td>
      									</tr>
      									<?php endforeach ; ?>
+										</tbody>
+     									
+     								
      								</table>
      							</div>
      						</div>

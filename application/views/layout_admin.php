@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/admin/assets/modules/datatables/datatables.min.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/admin/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/admin/assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css');?>">
   <!-- <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
   <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -153,7 +156,15 @@
   <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
   <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
   <script src="../node_modules/summernote/dist/summernote-bs4.js"></script>
-  <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script> -->
+  < src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></
+  <!-- JS Libraies -->
+  <script src="<?php echo base_url('assets/admin/assets/modules/datatables/datatables.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/admin/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/admin/assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/admin/assets/modules/jquery-ui/jquery-ui.min.js');?>"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="<?php echo base_url('assets/admin/assets/js/page/modules-datatables.js');?>"></script>script> -->
 
   <!-- Template JS File -->
   <script src="<?php echo base_url('assets/admin/assets/js/scripts.js');?>"></script>
