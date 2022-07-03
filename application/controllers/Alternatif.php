@@ -16,10 +16,9 @@ class Alternatif extends CI_Controller {
 			redirect('login');
 		}
 		
-		//$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
-		$data['alternatif']=$this->Mcrud->get_all_data('alternatif')->result();
-		//$data['detail_alternatif']=$this->Mcrud->get_detailalternatifbismillah()->result();
-		//$data['nama_alternatif']=$this->Mcrud->nama_alternatif()->result();
+		$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
+		
+		$data['alternatif']=$this->Mcrud->get_detailalternatif()->result();
 		$this->template->load('layout_admin', 'admin/alternatif/index',$data);
 		
 	}
@@ -92,161 +91,45 @@ class Alternatif extends CI_Controller {
 	}
 
 
-
-	public function simpan(){
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('kode_kriteria','kode_kriteria','required',
-		array('required'=>'Kode kriteria tidak boleh kosong!')
-		);
-		$this->form_validation->set_rules('nama_kriteria','nama_kriteria','required',
-		array('required'=>'Nama kriteria tidak boleh kosong!')
-		);
-		$this->form_validation->set_rules('bobot','bobot','required',
-		array('required'=>'Bobot tidak boleh kosong!')
-		);
-		if ($this->form_validation->run() == FALSE)
-		{
-			$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
-		//var_dump($data);
-		$this->template->load('layout_admin', 'admin/kriteria/form_tambah',$data);
- 		}
-		else
-		{
-		$kodekriteria = $this->input->post('kode_kriteria');
-		$kriteria = $this->input->post('nama_kriteria');
-		$bobot = $this->input->post('bobot');
-		$jenis = $this->input->post('jenis');
-		$data = array(
-			'kode_kriteria' => $kodekriteria,
-			'nama_kriteria' => $kriteria,
-			'bobot' => $bobot,
-			'jenis' => $jenis,
-		);
-		$this->Mcrud->insert('kriteria', $data);
-		redirect('kriteria');
-		}	
-	}
-
-	public function getalternatif($id){
-		$dataWhere = array('id_alternatif'=>$id);
-		$data['alternatif'] = $this->Mcrud->getdata_alternatif($id)->result();
-		$this->template->load('layout_admin', 'admin/alternatif/tampil_alternatif', $data);
-
-	}
-
-	public function edit()
-	{
-		$id_kriteria = $this->input->post('id_kriteria');
-		$kode_kriteria = $this->input->post('kode_kriteria');
-		$nama_kriteria = $this->input->post('nama_kriteria');
-		$bobot = $this->input->post('bobot');
-		$jenis = $this->input->post('jenis');
-		$dataUpdate = array(
-			'kode_kriteria' => $kode_kriteria,
-			'nama_kriteria' => $nama_kriteria,
-			'bobot' => $bobot,
-			'jenis' => $jenis,
-		);
-		$this->Mcrud->update('kriteria', $dataUpdate, 'id_kriteria',$id_kriteria);
-		redirect('kriteria');
-	}
-
-	// SUB KRITERIA
-
-	public function getsubkriteria($id){
+	// EDIT SUB KRITERIA ALTERNATIF
+	public function edit_kriteriaalternatif($id){
 		if(empty($this->session->userdata('username_admin'))){
 			redirect('login');
 		}
-		$dataWhere = array('id_kriteria'=>$id);
-		$data['kriteria'] = $this->Mcrud->get_by_id('kriteria', $dataWhere)->row_object();
-		$data['subkriteria'] = $this->Mcrud->get_by_id('subkriteria',$dataWhere)->result();
-		
-		$this->template->load('layout_admin', 'admin/kriteria/subkriteria', $data);
-
-	}
-
-	public function tambah_subkriteria($id){
-        if(empty($this->session->userdata('username_admin'))){
-			redirect('login');
-		}
-		$dataWhere = array('id_kriteria'=>$id);
-		$data['kriteria'] = $this->Mcrud->get_by_id('kriteria', $dataWhere)->row_object();
-		//var_dump($data);
-		$this->template->load('layout_admin', 'admin/kriteria/form_tambahsubkriteria',$data);
-    }
-
-	
-
-	public function simpan_subkriteria(){
-
-		$id_kriteria = $this->input->post('id_kriteria');
-		$nama_subkriteria = $this->input->post('nama_subkriteria');
-		$bobot = $this->input->post('bobot');
-		$data = array(
-			'id_kriteria' => $id_kriteria,
-			'nama_subkriteria' => $nama_subkriteria,
-			'bobot' => $bobot,
-		);
-		$this->Mcrud->insert('subkriteria', $data);
-		redirect('kriteria/getsubkriteria/'.$id_kriteria);
-	}
-
-	public function getidsubkriteria($id){
-		if(empty($this->session->userdata('username_admin'))){
-			redirect('login');
-		}
-		$dataWhere = array('id_subkriteria'=>$id);
+		// $dataWhere = array('id_alternatif'=>$id);
 		//$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->row_object();
-		$data['subkriteria'] = $this->Mcrud->get_by_id('subkriteria',$dataWhere)->row_object();
+		$data['detail_alternatif'] = $this->Mcrud->get_editalternatif($id)->row_object();
 		
-		$this->template->load('layout_admin', 'admin/kriteria/form_editsubkriteria', $data);
+		$this->template->load('layout_admin', 'admin/alternatif/form_editalternatif', $data);
 
 	}
 
-	public function edit_subkriteria($id_kriteria)
+	// SIMPAN EDIT ALTERNATIF
+	public function edit_alternatif($id_alternatif)
 	{
-		$id_subkriteria = $this->input->post('id_subkriteria');
-		$nama_subkriteria = $this->input->post('nama_subkriteria');
-		$bobot = $this->input->post('bobot');
+		$id_alternatif = $this->input->post('id_alternatif');
+		$C1 = $this->input->post('C1');
+		$C2 = $this->input->post('C2');
+		$C3 = $this->input->post('C3');
+		$C4 = $this->input->post('C4');
+		$C5 = $this->input->post('C5');
 		$dataUpdate = array(
-			'nama_subkriteria' => $nama_subkriteria,
-			'bobot' => $bobot,
+			'C1' => $C1,
+			'C2' => $C2,
+			'C3' => $C3,
+			'C4' => $C4,
+			'C5' => $C5,
 		);
-		$this->Mcrud->update('subkriteria', $dataUpdate, 'id_subkriteria',$id_subkriteria);
-		redirect('kriteria/getsubkriteria/'.$id_kriteria);
+		var_dump($dataUpdate);
+		$this->Mcrud->update('detail_alternatif', $dataUpdate, 'id_alternatif',$id_alternatif);
+		redirect('alternatif');
 	}
-
-
-	public function kriteria()
-	{
-		$id = $this->input->post('id');
-		$data = $this->Mcrud->get_sub($id);
-		//var_dump($data);
-		$this->output->set_content_type('application/json')->set_output( json_encode($data));
-	}
-
-
 
 	public function hapus($id)
 	{
 		$where = array('id_alternatif' => $id);
 		$this->Mcrud->delete($where,'alternatif');
 		redirect('alternatif');
-	}
-
-	public function hapus_subkriteria($idsubkriteria, $idkriteria)
-	{
-		$where = array('id_subkriteria' => $idkriteria);
-		$this->Mcrud->delete($where,'subkriteria');
-		redirect('kriteria/getsubkriteria/'.$idkriteria);
-	}
-
-	public function get_sub_kriteria()
-	{
-		$id_kriteria = $this->input->post('id', TRUE);
-		$data = $this->Mcrud->get_sub($id_kriteria)->result();
-		//var_dump($this->Mcrud);
-		echo json_encode($data);
 	}
 	
 }

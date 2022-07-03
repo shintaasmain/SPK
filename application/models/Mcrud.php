@@ -47,12 +47,11 @@ class Mcrud extends CI_Model{
 
     public function get_detailalternatif()
 	{
-      $this->db->select('alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif');
-      $this->db->from('detail_alternatif');
-      $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif');      
-      $this->db->join('kriteria','kriteria.id_kriteria = detail_alternatif.id_kriteria');      
-      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria');     
-      $this->db->group_by('detail_alternatif.id_alternatif');      
+      $this->db->select('alternatif.*, detail_alternatif.*');
+      $this->db->from('alternatif');    
+      $this->db->join('detail_alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif', 'LEFT');      
+      $this->db->group_by('alternatif.id_alternatif');  
+
       $query = $this->db->get();
       return $query;
 	}
@@ -79,6 +78,16 @@ class Mcrud extends CI_Model{
       //var_dump ($query);
       return $query;
 	}
+
+    public function get_editalternatif($dataWhere)
+    {
+        $this->db->select('*');
+        $this->db->from('detail_alternatif');
+        $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif'); 
+        $this->db->where('detail_alternatif.id_alternatif',$dataWhere);      
+        $query = $this->db->get();
+        return $query;
+    }
 
 
 

@@ -25,6 +25,7 @@ class Login extends CI_Controller {
             $data = [
                'id_admin' => $cek['id_admin'],
                'username_admin' => $cek['username_admin'],
+               'nama_admin' => $cek['nama_admin'],
                'status' => 'login'
             ];
             $this->session->set_userdata($data);

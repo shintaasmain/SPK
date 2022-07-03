@@ -117,7 +117,7 @@
             <a href="index.html">St</a>
           </div>
           <ul class="sidebar-menu">
-              <li class="<?php echo $this->uri->segment(2) == 'dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('adminpanel/dashboard');?>" ><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'admin' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('admin');?>" ><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
               <li class="<?php echo $this->uri->segment(1) == 'kategori' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('kriteria');?>"><i class="fas fa-th"></i> <span>Kriteria</span></a></li>
               <li class="<?php echo $this->uri->segment(1) == 'kota' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('alternatif');?>"><i class="fa fa-city"></i></i> <span>Alternatif</span></a></li>
               <li class="<?php echo $this->uri->segment(1) == 'kurir' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('penilaian');?>"><i class="fa fa-truck"></i><span>Penilaian</span></a></li>
