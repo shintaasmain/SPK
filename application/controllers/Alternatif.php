@@ -39,7 +39,13 @@ class Alternatif extends CI_Controller {
 		$data = array(
 			'nama_alternatif' => $nama_alternatif,
 		);
-		$this->Mcrud->insert('alternatif', $data);
+		$id_alternatif = $this->Mcrud->insert_alternatif($data);
+
+		$data_detail = array(
+			'id_alternatif' => $id_alternatif,
+		);
+
+		$id_detail = $this->Mcrud->insert_detail_alternatif($data_detail, 'detail_alternatif');
 		redirect('alternatif');
 	}
 
@@ -56,42 +62,20 @@ class Alternatif extends CI_Controller {
 		//var_dump($data);
 		$this->template->load('layout_admin', 'admin/alternatif/form_tambah',$data);
     }
-    public function tambahcoba($id){
-		if(empty($this->session->userdata('username_admin'))){
-			redirect('login');
-		}
+    // public function tambahcoba($id){
+	// 	if(empty($this->session->userdata('username_admin'))){
+	// 		redirect('login');
+	// 	}
 
-		$dataWhere = array('id_alternatif'=>$id);
-		$data['alternatif'] = $this->Mcrud->get_by_id('alternatif',$dataWhere)->result();
-		$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
+	// 	$dataWhere = array('id_alternatif'=>$id);
+	// 	$data['alternatif'] = $this->Mcrud->get_by_id('alternatif',$dataWhere)->result();
+	// 	$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
 
-		//var_dump($data);
-		$this->template->load('layout_admin', 'admin/alternatif/form_tambahcoba',$data);
-    }
+	// 	//var_dump($data);
+	// 	$this->template->load('layout_admin', 'admin/alternatif/form_tambahcoba',$data);
+    // }
 
 	// SIMPAN TAMBAH KRITERIA UNTUK ALTERNATIF
-		public function simpan_detailAlternatif(){
-		
-		$id_alternatif = $this->input->post('id_alternatif');
-		$C1 = $this->input->post('c1');
-		$C2 = $this->input->post('c2');
-		$C3 = $this->input->post('c3');
-		$C4 = $this->input->post('c4');
-		$C5 = $this->input->post('c5');
-		$data = array(
-			'id_alternatif' => $id_alternatif,
-			'C1' => $C1,
-			'C2' => $C2,
-			'C3' => $C3,
-			'C4' => $C4,
-			'C5' => $C5,
-		);
-		$this->Mcrud->insert('detail_alternatif', $data);
-		redirect('alternatif');
-	}
-
-
-	// EDIT SUB KRITERIA ALTERNATIF
 	public function edit_kriteriaalternatif($id){
 		if(empty($this->session->userdata('username_admin'))){
 			redirect('login');
@@ -128,6 +112,7 @@ class Alternatif extends CI_Controller {
 	public function hapus($id)
 	{
 		$where = array('id_alternatif' => $id);
+		$this->Mcrud->delete($where,'detail_alternatif');
 		$this->Mcrud->delete($where,'alternatif');
 		redirect('alternatif');
 	}

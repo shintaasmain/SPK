@@ -21,7 +21,7 @@
      						</div>
      						<div class="card-body">
      							<div class="table-responsive">
-     								<table class="table table-bordered table-md">
+     								<table class="table table-striped table-md">
 										<thead>
 											<tr>
      										<th>No</th>
@@ -45,9 +45,8 @@
 												<td><?= $item->C4  ?></td>
 												<td><?= $item->C5  ?></td>
 												<td>
-     											<a href="<?php echo site_url('alternatif/tambah/'.$item->id_alternatif);?>"class="btn btn-primary">kriteria</a>
-     											<a href="<?php echo site_url('alternatif/edit_kriteriaalternatif/'.$item->id_alternatif);?>"class="btn btn-warning">Edit</a>
-												<a onclick="deleteConfirm('<?php echo site_url('kriteria/hapus/'.$item->id_alternatif);?>')"href="#!" class="btn btn-danger">Hapus</a></td>
+     											<a href="<?php echo site_url('alternatif/edit_kriteriaalternatif/'.$item->id_alternatif);?>"class="btn btn-primary">Kriteria</a>
+												<a onclick="deleteConfirm('<?php echo site_url('alternatif/hapus/'.$item->id_alternatif);?>')"href="#!" class="btn btn-danger">Hapus</a></td>
 											</tr>
 											<?php } ?>
 										</tbody>

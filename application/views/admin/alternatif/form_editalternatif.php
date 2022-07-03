@@ -16,7 +16,7 @@
 
               <div class="col-12 col-md-6 col-lg-6">
                 <form method="post" action="<?php echo site_url('alternatif/edit_alternatif/'.$detail_alternatif->id_detailalternatif);?>" >     
-                  <input type="" name="id_alternatif"  value="<?php echo $detail_alternatif->id_alternatif;?>">
+                  <input type="hidden" name="id_alternatif"  value="<?php echo $detail_alternatif->id_alternatif;?>">
                 <div class="card">
                 <div class="card">  
                 <div class="card-header">

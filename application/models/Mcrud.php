@@ -56,30 +56,20 @@ class Mcrud extends CI_Model{
       return $query;
 	}
 
-    public function get_detailalternatifbismillah()
+    //insert alternatif
+    public function insert_alternatif($data)
 	{
-      $this->db->select('alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif, kriteria.nama_kriteria');
-      $this->db->from('detail_alternatif');
-      $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif', 'LEFT');      
-      $this->db->join('kriteria','kriteria.id_kriteria = detail_alternatif.id_kriteria', 'LEFT');      
-      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria', 'LEFT');   
-      $this->db->group_by('detail_alternatif.id_kriteria');      
-      $this->db->group_by('detail_alternatif.id_alternatif');      
-      $query = $this->db->get();
-      //var_dump ($query);
-      return $query;
-	}
-    public function nama_alternatif()
-	{
-      $this->db->select('*');
-      $this->db->from('alternatif');    
-      $this->db->group_by('nama_alternatif');      
-      $query = $this->db->get();
-      //var_dump ($query);
-      return $query;
+		$this->db->insert('alternatif', $data);
+		return $this->db->insert_id();
 	}
 
-    public function get_editalternatif($dataWhere)
+    public function insert_detail_alternatif($data_detail)
+	{
+		$this->db->insert('detail_alternatif', $data_detail);
+		return $this->db->insert_id();
+	}
+    
+     public function get_editalternatif($dataWhere)
     {
         $this->db->select('*');
         $this->db->from('detail_alternatif');
@@ -88,9 +78,6 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
-
-
-
 }
 
 ?>
