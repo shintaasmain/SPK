@@ -16,9 +16,10 @@ class Alternatif extends CI_Controller {
 			redirect('login');
 		}
 		
-		$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
+		//$data['kriteria']=$this->Mcrud->get_all_data('kriteria')->result();
 		$data['alternatif']=$this->Mcrud->get_all_data('alternatif')->result();
-		$data['detail_alternatif']=$this->Mcrud->get_detailalternatif()->result();
+		//$data['detail_alternatif']=$this->Mcrud->get_detailalternatifbismillah()->result();
+		//$data['nama_alternatif']=$this->Mcrud->nama_alternatif()->result();
 		$this->template->load('layout_admin', 'admin/alternatif/index',$data);
 		
 	}
@@ -56,17 +57,35 @@ class Alternatif extends CI_Controller {
 		//var_dump($data);
 		$this->template->load('layout_admin', 'admin/alternatif/form_tambah',$data);
     }
+    public function tambahcoba($id){
+		if(empty($this->session->userdata('username_admin'))){
+			redirect('login');
+		}
+
+		$dataWhere = array('id_alternatif'=>$id);
+		$data['alternatif'] = $this->Mcrud->get_by_id('alternatif',$dataWhere)->result();
+		$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->result();
+
+		//var_dump($data);
+		$this->template->load('layout_admin', 'admin/alternatif/form_tambahcoba',$data);
+    }
 
 	// SIMPAN TAMBAH KRITERIA UNTUK ALTERNATIF
 		public function simpan_detailAlternatif(){
 		
 		$id_alternatif = $this->input->post('id_alternatif');
-		$id_kriteria = $this->input->post('kriteria');
-		$id_subkriteria = $this->input->post('subkriteria');
+		$C1 = $this->input->post('c1');
+		$C2 = $this->input->post('c2');
+		$C3 = $this->input->post('c3');
+		$C4 = $this->input->post('c4');
+		$C5 = $this->input->post('c5');
 		$data = array(
 			'id_alternatif' => $id_alternatif,
-			'id_kriteria' => $id_kriteria,
-			'id_subkriteria' => $id_subkriteria,
+			'C1' => $C1,
+			'C2' => $C2,
+			'C3' => $C3,
+			'C4' => $C4,
+			'C5' => $C5,
 		);
 		$this->Mcrud->insert('detail_alternatif', $data);
 		redirect('alternatif');
@@ -210,9 +229,9 @@ class Alternatif extends CI_Controller {
 
 	public function hapus($id)
 	{
-		$where = array('id_kriteria' => $id);
-		$this->Mcrud->delete($where,'kriteria');
-		redirect('kriteria');
+		$where = array('id_alternatif' => $id);
+		$this->Mcrud->delete($where,'alternatif');
+		redirect('alternatif');
 	}
 
 	public function hapus_subkriteria($idsubkriteria, $idkriteria)

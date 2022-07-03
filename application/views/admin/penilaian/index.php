@@ -38,7 +38,7 @@
                         <a href="<?php echo site_url('kriteria/getid/'.$item->id_alternatif);?>" class="btn btn-warning">Edit</a>
                         <a onclick="deleteConfirm('<?php echo site_url('alternatif/hapus/'.$item->id_alternatif);?>')" href="#!" class="btn btn-danger">Hapus</a></td>
                         </tr>
-                        <?php endforeach;?>
+                        <?php endforeach ; ?>
                       </table>
                     </div>
                   </div>
@@ -73,3 +73,4 @@
     </div>
   </div>
 </div>
+

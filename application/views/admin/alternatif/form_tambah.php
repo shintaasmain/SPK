@@ -21,25 +21,39 @@
 									<h4>Form Tambah Kriteria Untuk Alternatif</h4>
 								</div>
 								<div class="card-body">
-									<div class="form-group row">
 										<?php foreach ($alternatif as $a):?>
 										<input type="hidden" class="form-control" id="inputEmail3" name="id_alternatif" placeholder="" value="<?= $a->id_alternatif?>">
-										<?php endforeach;?>
+										<?php endforeach;?><div class="form-group row">
+										<label for="inputEmail3" class="col-sm-2">C1</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputEmail3" name="c1" placeholder="">
+										</div>
 									</div>
-										<div class="form-group">
-											<label>Kriteria</label>
-											<select class="form-control" name="kriteria" id="kriteria" required>
-												<option value="">Pilih....</option>
-												<?php foreach($kriteria as $row):?>
-												<option value="<?php echo $row->id_kriteria;?>"><?php echo $row->nama_kriteria;?></option>
-												<?php endforeach;?>
-											</select>
+									<div class="form-group row">
+										<label for="inputEmail3" class="col-sm-2">C2</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputEmail3" name="c2" placeholder="">
 										</div>
-										<div class="form-group">
-											<label>Sub Kriteria</label>
-											<select class="form-control" id="subkriteria" name="subkriteria" required>
-											</select>
+									</div>
+									<div class="form-group row">
+										<label for="inputEmail3" class="col-sm-2">C3</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputEmail3" name="c3" placeholder="">
 										</div>
+									</div>
+									<div class="form-group row">
+										<label for="inputEmail3" class="col-sm-2">C4</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputEmail3" name="c4" placeholder="">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="inputEmail3" class="col-sm-2">C5</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="inputEmail3" name="c5" placeholder="">
+										</div>
+									</div>
+
 								</div>
 								<div class="card-footer">
 									<button type="submit" class="btn btn-primary">Simpan</button>

@@ -47,15 +47,40 @@ class Mcrud extends CI_Model{
 
     public function get_detailalternatif()
 	{
-      $this->db->select('detail_alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif');
+      $this->db->select('alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif');
       $this->db->from('detail_alternatif');
       $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif');      
       $this->db->join('kriteria','kriteria.id_kriteria = detail_alternatif.id_kriteria');      
-      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria');      
+      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria');     
       $this->db->group_by('detail_alternatif.id_alternatif');      
       $query = $this->db->get();
       return $query;
 	}
+
+    public function get_detailalternatifbismillah()
+	{
+      $this->db->select('alternatif.*, subkriteria.nama_subkriteria, alternatif.nama_alternatif, kriteria.nama_kriteria');
+      $this->db->from('detail_alternatif');
+      $this->db->join('alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif', 'LEFT');      
+      $this->db->join('kriteria','kriteria.id_kriteria = detail_alternatif.id_kriteria', 'LEFT');      
+      $this->db->join('subkriteria','subkriteria.id_subkriteria = detail_alternatif.id_subkriteria', 'LEFT');   
+      $this->db->group_by('detail_alternatif.id_kriteria');      
+      $this->db->group_by('detail_alternatif.id_alternatif');      
+      $query = $this->db->get();
+      //var_dump ($query);
+      return $query;
+	}
+    public function nama_alternatif()
+	{
+      $this->db->select('*');
+      $this->db->from('alternatif');    
+      $this->db->group_by('nama_alternatif');      
+      $query = $this->db->get();
+      //var_dump ($query);
+      return $query;
+	}
+
+
 
 }
 
