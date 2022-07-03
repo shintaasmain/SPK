@@ -39,7 +39,13 @@ class Alternatif extends CI_Controller {
 		$data = array(
 			'nama_alternatif' => $nama_alternatif,
 		);
-		$this->Mcrud->insert('alternatif', $data);
+		$id_alternatif = $this->Mcrud->insert_alternatif($data);
+
+		$data_detail = array(
+			'id_alternatif' => $id_alternatif,
+		);
+
+		$id_detail = $this->Mcrud->insert_detail_alternatif($data_detail, 'detail_alternatif');
 		redirect('alternatif');
 	}
 

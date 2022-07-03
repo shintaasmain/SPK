@@ -22,7 +22,7 @@
      						</div>
      						<?php } else { ?>
      						<div class="card-header">
-     							<em class="text-danger">*Jumlah kriteria sudah terpenuhi</em>
+     							<em class="text-danger">*Jumlah kriteria sudah terpenuhi (5 Kriteria)</em>
      						</div>
      						<?php } ?>
 

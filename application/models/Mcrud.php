@@ -56,6 +56,19 @@ class Mcrud extends CI_Model{
       return $query;
 	}
 
+    //insert alternatif
+    public function insert_alternatif($data)
+	{
+		$this->db->insert('alternatif', $data);
+		return $this->db->insert_id();
+	}
+
+    public function insert_detail_alternatif($data_detail)
+	{
+		$this->db->insert('detail_alternatif', $data_detail);
+		return $this->db->insert_id();
+	}
+
 }
 
 ?>
