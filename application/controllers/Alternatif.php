@@ -80,8 +80,8 @@ class Alternatif extends CI_Controller {
 		if(empty($this->session->userdata('username_admin'))){
 			redirect('login');
 		}
-		// $dataWhere = array('id_alternatif'=>$id);
-		//$data['kriteria'] = $this->Mcrud->get_all_data('kriteria')->row_object();
+		
+		$data['keterangan'] = $this->Mcrud->get_subkriteria()->result();
 		$data['detail_alternatif'] = $this->Mcrud->get_editalternatif($id)->row_object();
 		
 		$this->template->load('layout_admin', 'admin/alternatif/form_editalternatif', $data);

@@ -13,7 +13,7 @@
           <div class="section-body">
             <h2 class="section-title">Forms</h2>
             <div class="row">
-
+              <!-- kiri -->
               <div class="col-12 col-md-6 col-lg-6">
                 <form method="post" action="<?php echo site_url('alternatif/edit_alternatif/'.$detail_alternatif->id_detailalternatif);?>" >     
                   <input type="hidden" name="id_alternatif"  value="<?php echo $detail_alternatif->id_alternatif;?>">
@@ -65,6 +65,43 @@
                     <button type="submit" class="btn btn-primary">Simpan</button>
                   </div>
                 </div>
+              </div>
+              <!-- kanan -->
+              <div class="col-12 col-md-6 col-lg-6">
+              <div class="card">
+     						<div class="card-header">
+                 <h4>Keterangan : </h4> 
+     						</div>
+     						<div class="card-body">
+     							<div class="table-responsive">
+     								<table class="table table-striped table-md">
+										<thead>
+											<tr>
+     										<th>No</th>
+                        <th>Kode Kriteria</th>
+     										<th>Kriteria</th>
+     										<th>Sub Kriteria</th>
+     										<th>Bobot</th>
+     									<tr>
+										</thead>
+										<tbody>
+										<?php 
+										$no = 1;
+										foreach ($keterangan as $item) { ?>
+											<tr>
+											  <td scope="row" class="text-center"><?= $no++ ?></td>
+												<td><?= $item->kode_kriteria ?></td>
+												<td><?= $item->nama_kriteria ?></td>
+												<td><?= $item->nama_subkriteria ?></td>
+												<td><?= $item->bobot  ?></td>
+												
+                        <?php } ?>
+                        </tr>
+                    </tbody>
+     								</table>
+     							</div>
+     						</div>
+     					</div>
               </div>
             </div>
           </div>
