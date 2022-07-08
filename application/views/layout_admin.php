@@ -164,7 +164,7 @@
   <script src="<?php echo base_url('assets/admin/assets/modules/jquery-ui/jquery-ui.min.js');?>"></script>
 
   <!-- Page Specific JS File -->
-  <script src="<?php echo base_url('assets/admin/assets/js/page/modules-datatables.js');?>"></script>script> -->
+  <script src="<?php echo base_url('assets/admin/assets/js/page/modules-datatables.js');?>"></script>
 
   <!-- Template JS File -->
   <script src="<?php echo base_url('assets/admin/assets/js/scripts.js');?>"></script>
