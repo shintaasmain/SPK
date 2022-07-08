@@ -78,6 +78,15 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+
+    public function get_subkriteria(){
+        $this->db->select('kriteria.id_kriteria, kriteria.kode_kriteria, kriteria.nama_kriteria, subkriteria.id_subkriteria, subkriteria.nama_subkriteria, subkriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->join('subkriteria','kriteria.id_kriteria = subkriteria.id_kriteria'); 
+        $this->db->order_by('subkriteria.id_kriteria', 'asc');  
+        $query = $this->db->get();
+        return $query;
+    }
 }
 
 ?>
