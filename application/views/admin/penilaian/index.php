@@ -343,7 +343,7 @@
      								</table>
      							</div>
      						</div>
-                </div>
+                </div>.......
               </div>
             </div>
 							$rangking10 = $hasil10 * 0.1;
