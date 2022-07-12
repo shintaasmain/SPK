@@ -294,48 +294,54 @@
 										<?php foreach ($alternatif as $item) { ?>
 											<?php if ($k-> jenis == 'benefit') {?>
 													<?php foreach ($max1 as $max) { ?>
-													<td><?= (double)$item->C1 / (double)$max->C1 ?></td>
+													<td> <?php
+													$hasil1 = (double)$item->C1 / (double)$max->C1;
+													echo $hasil1;
+													$rangking1 = $hasil1 * 0.3;
+													?> 
+													
+													</td>
 													<?php } ?>
 												<?php } else if ($k -> jenis == 'cost') {?> 
 													<?php foreach ($min2 as $min) { ?>
-													<td><?= (double)$min->C1 / (double)$item->C1 ?></td>
+													<td><?= $hasil2 = (double)$min->C1 / (double)$item->C1 ?></td>
 													<?php } ?>
 												<?php } ?>
 											<?php if ($k-> jenis == 'benefit') {?>
 													<?php foreach ($max2 as $max) { ?>
-													<td><?= (double)$item->C2 / (double)$max->C2 ?></td>
+													<td><?= $hasil3 = (double)$item->C2 / (double)$max->C2 ?></td>
 													<?php } ?>
 												<?php } else if ($k -> jenis == 'cost') {?> 
 													<?php foreach ($min2 as $min) { ?>
-													<td><?= (double)$min->C2 / (double)$item->C2 ?></td>
+													<td><?= $hasil4 = (double)$min->C2 / (double)$item->C2 ?></td>
 													<?php } ?>
 												<?php } ?>
 											<?php if ($k-> jenis == 'benefit') {?>
 													<?php foreach ($max3 as $max) { ?>
-													<td><?= (double)$item->C3 / (double)$max->C3 ?></td>
+													<td><?= $hasil5 = (double)$item->C3 / (double)$max->C3 ?></td>
 													<?php } ?>
 												<?php } else if ($k -> jenis == 'cost') {?> 
 													<?php foreach ($min3 as $min) { ?>
-													<td><?= (double)$min->C3 / (double)$item->C3 ?></td>
+													<td><?= $hasil6 = (double)$min->C3 / (double)$item->C3 ?></td>
 													<?php } ?>
 												<?php } ?>
 											<?php if ($k-> jenis == 'benefit') {?>
 													<?php foreach ($max4 as $max) { ?>
-													<td><?= (double)$item->C4 / (double)$max->C4 ?></td>
+													<td><?= $hasil7 = (double)$item->C4 / (double)$max->C4 ?></td>
 													<?php } ?>
 												<?php } else if ($k -> jenis == 'cost') {?> 
 													<?php foreach ($min4 as $min) { ?>
-													<td><?= (double)$min->C4 / (double)$item->C4 ?></td>
+													<td><?= $hasil8 = (double)$min->C4 / (double)$item->C4 ?></td>
 													<?php } ?>
 												<?php } ?>
 												<!-- <td><?= $item->C4 ?></td> -->
 												<?php if ($k-> jenis == 'benefit') {?>
 													<?php foreach ($max5 as $max) { ?>
-													<td><?= (double)$item->C5 / (double)$max->C5 ?></td>
+													<td><?= $hasil9 = (double)$item->C5 / (double)$max->C5 ?></td>
 													<?php } ?>
 												<?php } else if ($k -> jenis == 'cost') {?> 
 													<?php foreach ($min5 as $min) { ?>
-													<td><?= (double)$min->C5 / (double)$item->C5 ?></td>
+													<td><?= $hasil10 = (double)$min->C5 / (double)$item->C5 ?></td>
 													<?php } ?>
 												<?php } ?>
 											</tr>
@@ -346,6 +352,110 @@
                 </div>
               </div>
             </div>
+
+				<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+     				<div class="table-responsive">
+     								<table class="table table-striped table-md">
+										<?php foreach ($alternatif as $item) { ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max1 as $max) { ?>
+													<td> <?php
+													$hasil1 = (double)$item->C1 / (double)$max->C1;
+													
+													$rangking1 = $hasil1 * 0.3;
+													echo $rangking1;
+													?> 
+													
+													</td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min2 as $min) { ?>
+													<td><?php 
+														$hasil2 = (double)$min->C1 / (double)$item->C1;
+														$rangking2 = $hasil2 * 0.3;
+														echo $rangking2;
+														?>
+													</td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max2 as $max) { ?>
+													<td><?php 
+														$hasil3 = (double)$item->C2 / (double)$max->C2;
+														$rangking3 = $hasil3 * 0.3;
+														echo $rangking3;?>
+													</td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min2 as $min) { ?>
+													<td><?php 
+														$hasil4 = (double)$min->C2 / (double)$item->C2;
+														$rangking4 = $hasil4 * 0.3;
+														echo $rangking4; ?>
+													</td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max3 as $max) { ?>
+													<td><?php 
+														$hasil5 = (double)$item->C3 / (double)$max->C3;
+														$rangking5 = $hasil5 * 0.2;
+														echo $rangking5; ?>
+													</td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min3 as $min) { ?>
+													<td><?php 
+														$hasil6 = (double)$min->C3 / (double)$item->C3;
+														$rangking6 = $hasil6 * 0.2;
+														echo $rangking6; ?>
+													</td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max4 as $max) { ?>
+													<td><?php 
+														$hasil7 = (double)$item->C4 / (double)$max->C4;
+														$rangking7 = $hasil7 * 0.1;
+														echo $rangking7; ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min4 as $min) { ?>
+													<td><?php 
+														$hasil8 = (double)$min->C4 / (double)$item->C4;
+														$rangking8 = $hasil8 * 0.1;
+														echo $rangking8; ?></td>
+													<?php } ?>
+												<?php } ?>
+												<!-- <td><?= $item->C4 ?></td> -->
+												<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max5 as $max) { ?>
+													<td><?php 
+														$hasil9 = (double)$item->C5 / (double)$max->C5;
+														$rangking9 = $hasil9 * 0.1;
+														echo $rangking9; ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min5 as $min) { ?>
+													<td><?php $hasil10 = (double)$min->C5 / (double)$item->C5;
+													$rangking10 = $hasil10 * 0.1;
+													echo $rangking10; ?></td>
+													<?php } ?>
+												<?php } ?>
+											</tr>
+											<?php } ?>
+     								</table>
+     							</div>
+     						</div>
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         </section>
       </div>
