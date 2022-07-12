@@ -445,6 +445,14 @@
 													echo $rangking10; ?></td>
 													<?php } ?>
 												<?php } ?>
+												<?php if ($k-> jenis == 'benefit') {?>
+													
+													<td><?= $rangking1+$rangking3+$rangking5+$rangking7+$rangking9 ?>
+													</td>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<td><?= $rangking2+$rangking4+$rangking6+$rangking8+$rangking10 ?>
+													</td>
+												<?php } ?>
 											</tr>
 											<?php } ?>
      								</table>
