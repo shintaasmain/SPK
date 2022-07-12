@@ -284,6 +284,68 @@
                 </div>
               </div>
             </div>
+			<!-- HASIL TERNORMALISASI -->
+			<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+     				<div class="table-responsive">
+     								<table class="table table-striped table-md">
+										<?php foreach ($alternatif as $item) { ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max1 as $max) { ?>
+													<td><?= (double)$item->C1 / (double)$max->C1 ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min2 as $min) { ?>
+													<td><?= (double)$min->C1 / (double)$item->C1 ?></td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max2 as $max) { ?>
+													<td><?= (double)$item->C2 / (double)$max->C2 ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min2 as $min) { ?>
+													<td><?= (double)$min->C2 / (double)$item->C2 ?></td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max3 as $max) { ?>
+													<td><?= (double)$item->C3 / (double)$max->C3 ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min3 as $min) { ?>
+													<td><?= (double)$min->C3 / (double)$item->C3 ?></td>
+													<?php } ?>
+												<?php } ?>
+											<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max4 as $max) { ?>
+													<td><?= (double)$item->C4 / (double)$max->C4 ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min4 as $min) { ?>
+													<td><?= (double)$min->C4 / (double)$item->C4 ?></td>
+													<?php } ?>
+												<?php } ?>
+												<!-- <td><?= $item->C4 ?></td> -->
+												<?php if ($k-> jenis == 'benefit') {?>
+													<?php foreach ($max5 as $max) { ?>
+													<td><?= (double)$item->C5 / (double)$max->C5 ?></td>
+													<?php } ?>
+												<?php } else if ($k -> jenis == 'cost') {?> 
+													<?php foreach ($min5 as $min) { ?>
+													<td><?= (double)$min->C5 / (double)$item->C5 ?></td>
+													<?php } ?>
+												<?php } ?>
+											</tr>
+											<?php } ?>
+     								</table>
+     							</div>
+     						</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
