@@ -206,6 +206,47 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+
+    public function getBobotC1()
+    {
+        $this->db->select('kriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C1");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getBobotC2()
+    {
+        $this->db->select('kriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C2");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getBobotC3()
+    {
+        $this->db->select('kriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C3");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getBobotC4()
+    {
+        $this->db->select('kriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C4");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getBobotC5()
+    {
+        $this->db->select('kriteria.bobot');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C5");
+        $query = $this->db->get();
+        return $query;
+    }
 }
 
 ?>
