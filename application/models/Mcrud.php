@@ -87,6 +87,125 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+    // C1
+    public function getwhereC1()
+    {
+        $this->db->select('kriteria.jenis');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C1");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmaxC1()
+    {
+        $this->db->select_max('C1');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getminC1()
+    {
+        $this->db->select_min('C1');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    // C2
+    public function getwhereC2()
+    {
+        $this->db->select('kriteria.jenis');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C2");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmaxC2()
+    {
+        $this->db->select_max('C2');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getminC2()
+    {
+        $this->db->select_min('C2');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    //C3
+    public function getwhereC3()
+    {
+        $this->db->select('kriteria.jenis');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C3");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmaxC3()
+    {
+        $this->db->select_max('C3');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getminC3()
+    {
+        $this->db->select_min('C3');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    //C4
+    public function getwhereC4()
+    {
+        $this->db->select('kriteria.jenis');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C4");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmaxC4()
+    {
+        $this->db->select_max('C4');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getminC4()
+    {
+        $this->db->select_min('C4');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    //C5
+    public function getwhereC5()
+    {
+        $this->db->select('kriteria.jenis');
+        $this->db->from('kriteria');
+        $this->db->where('kriteria.kode_kriteria',"C5");
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmaxC5()
+    {
+        $this->db->select_max('C5');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getminC5()
+    {
+        $this->db->select_min('C5');
+        $this->db->from('detail_alternatif');
+        $query = $this->db->get();
+        return $query;
+    }
 }
 
 ?>

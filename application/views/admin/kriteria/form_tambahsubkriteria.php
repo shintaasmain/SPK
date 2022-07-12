@@ -30,7 +30,7 @@
                       </div>
                       <label for="inputEmail3" class="col-sm-3 cpl-form-label">Bobot</label>
                       <div class="col-sm-9 mb-4">
-                        <input type="number" class="form-control" id="inputEmail3" name="bobot" placeholder="">
+                        <input type="text" class="form-control" id="inputEmail3" name="bobot" placeholder="">
                       </div>
                     </div>
                   </div>
