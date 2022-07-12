@@ -34,6 +34,13 @@ class Penilaian extends CI_Controller {
 		$data['max5']=$this->Mcrud->getmaxC5()->result();
 		$data['min5']=$this->Mcrud->getminC5()->result();
 
+
+		$data['bobotC1']=$this->Mcrud->getBobotC1()->result();
+		$data['bobotC2']=$this->Mcrud->getBobotC2()->result();
+		$data['bobotC3']=$this->Mcrud->getBobotC3()->result();
+		$data['bobotC4']=$this->Mcrud->getBobotC4()->result();
+		$data['bobotC5']=$this->Mcrud->getBobotC5()->result();
+
 		
 		$data['alternatif']=$this->Mcrud->get_detailalternatif()->result();
 		$this->template->load('layout_admin', 'admin/penilaian/index',$data);
