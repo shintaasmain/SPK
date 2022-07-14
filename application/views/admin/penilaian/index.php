@@ -454,6 +454,7 @@
 													<?php } ?>
 													<?php } ?>
 												<?php } ?>
+
 												<?php if ($k-> jenis == 'benefit') {?>
 													
 													<td><?= $rangking1+$rangking3+$rangking5+$rangking7+$rangking9 ?>
