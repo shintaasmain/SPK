@@ -247,6 +247,43 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+    public function hitungData()
+    {
+        $query = $this->db->get('alternatif');
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
+        }
+    }
+
+    public function hitungRangking()
+    {
+
+			$this->db->select('*,penilaian.hasil,alternatif.nama_alternatif');
+            $this->db->from('penilaian');
+            $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
+            //$this->db->group_by('t.town_id');
+            $this->db->order_by("hasil",'DESC');
+            $query = $this->db->get();
+            return $query;
+
+    }
+
+    public function keputusan()
+    {
+        $this->db->select('alternatif.nama_alternatif');
+        $this->db->from('penilaian');
+        $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
+        //$this->db->group_by('t.town_id');
+        $this->db->limit(1);
+        $this->db->order_by("hasil",'DESC');
+        $query = $this->db->get();
+        return $query;
+    }
 }
 
 ?>

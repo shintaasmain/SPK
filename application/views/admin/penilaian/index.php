@@ -289,6 +289,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+					<h4>Matriks Ternormalisasi (R)</h4>
      				<div class="table-responsive">
      								<table class="table table-striped table-md">
 										<?php foreach ($alternatif as $item) { ?>
@@ -352,10 +353,11 @@
                 </div>
               </div>
             </div>
-
+			<h2 class="section-title">Hitung Perangkingan</h2>
 				<div class="row">
               <div class="col-12">
                 <div class="card">
+				<form action="<?= base_url('penilaian/post') ?>" method="post" id="simpan">
                   <div class="card-body">
      				<div class="table-responsive">
      								<table class="table table-striped table-md">
@@ -454,25 +456,77 @@
 													<?php } ?>
 													<?php } ?>
 												<?php } ?>
+												<td> <input type="hidden" name="id_alternatif[]" value="<?= $item->id_alternatif; ?> ">
+												<?php for ($i=0; $i<1; $i++) { ?> 
 												<?php if ($k-> jenis == 'benefit') {?>
-													
-													<td><?= $rangking1+$rangking3+$rangking5+$rangking7+$rangking9 ?>
+													<?php $rangkingbenefit = $rangking1+$rangking3+$rangking5+$rangking7+$rangking9;?>
+													<td> <input name="hasil[]" value="<?= $rangkingbenefit; ?> ">
 													</td>
 												<?php } else if ($k -> jenis == 'cost') {?> 
-													<td><?= $rangking2+$rangking4+$rangking6+$rangking8+$rangking10 ?>
+													<?php $rangkingcost = $rangking2+$rangking4+$rangking6+$rangking8+$rangking10;?>
+													<td><input name="hasil[]" value="<?= $rangkingcost; ?> ">
 													</td>
+												<?php } ?>
 												<?php } ?>
 											</tr>
 											<?php } ?>
+											
+											<input type="hidden" name="jumlah" value="<?=$total_data?>">
+     								</table>
+									 <div class="form-group">
+                                    <button type="submit" class="btn btn-primary  btn-sm submit-reset">Simpan </button>                                                
+                                </div>
+     							</div>
+     						</div>
+                </div>
+				</form>
+              </div>
+            </div>
+
+			
+			<!-- HASIL PERANGKINGAN -->
+			<h2 class="section-title">Perangkingan</h2>
+			<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+     				<div class="table-responsive">
+                   	<table class="table table-striped table-md">
+										<thead>
+											<tr>
+												<th>Rangking</th>
+												<th>Alternatif</th>
+												<th>Nilai</th>
+     										<tr>
+										</thead>
+										<tbody>
+										<?php 
+										$no=1;
+										foreach ($hasil_rangking as $item) { ?>
+											<tr>
+												<td><?= $no++ ?></td>
+												<td><?= $item->nama_alternatif ?></td>
+												<td><?= $item->hasil ?></td>
+												<?php } ?>
+											</tr>
+										</tbody>
      								</table>
      							</div>
      						</div>
                 </div>
               </div>
             </div>
-
-
-
+			
+			<!-- KESIMPULAN -->
+			<h2 class="section-title">Keputusan</h2>
+			<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+     				<h> Dari beberapa alternatif yang telah Anda masukkan dapat diambil sebuah keputusan perguruan tinggi terbaik adalah  </h> <?php foreach ($keputusan as $K) {?> <?= $K->nama_alternatif ?> <?php }?> 
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -482,6 +536,27 @@
     $('#btn-delete').attr('href', url);
     $('#deleteModal').modal();
   }
+</script>
+
+$(document).ready(function(){
+	  
+})
+<script>
+	function tambah(){
+		$.ajax({
+			url:$("#simpan").attr(action),
+			type:'post',
+			cache:false,
+			dataType:"json";
+			data:$("#simpan").serialize(),
+			success:function($data){
+				if (data.success == true){
+					$('.input1').val('');
+					$('.input2').val('');
+				}
+			}
+		});
+	}
 </script>
 <!-- Hapus MODAL -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -501,4 +576,3 @@
     </div>
   </div>
 </div>
-
