@@ -84,12 +84,11 @@ class Penilaian extends CI_Controller {
 				$this->db->insert('penilaian',$data);
 				}
 				redirect('penilaian/');
+				
 			} elseif(count($cek)>=1) {
 				$hasil = $this->input->post('hasil');
 				$id = $this->input->post('jumlah');
 				$id_alternatif = $this->input->post('id_alternatif');
-		
-
 
 				$where = array('id_admin' => $this->session->userdata('id_admin'));
 				$this->db->delete('penilaian', $where);
@@ -102,7 +101,7 @@ class Penilaian extends CI_Controller {
 				);
 				
 				$this->db->insert('penilaian',$data);
-			}
+				}
 
 				redirect('penilaian/');
 			}
