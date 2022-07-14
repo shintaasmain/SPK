@@ -268,11 +268,13 @@ class Mcrud extends CI_Model{
 
     public function hitungRangking()
     {
+        $where = $this->session->userdata('id_admin');
 
 			$this->db->select('*,penilaian.hasil,alternatif.nama_alternatif');
             $this->db->from('penilaian');
             $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
             //$this->db->group_by('t.town_id');
+            $this->db->where('penilaian.id_admin', $where);
             $this->db->order_by("hasil",'DESC');
             $query = $this->db->get();
             return $query;
@@ -281,11 +283,13 @@ class Mcrud extends CI_Model{
 
     public function keputusan()
     {
+        $where = $this->session->userdata('id_admin');
         $this->db->select('alternatif.nama_alternatif');
         $this->db->from('penilaian');
         $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
         //$this->db->group_by('t.town_id');
         $this->db->limit(1);
+        $this->db->where('penilaian.id_admin', $where);
         $this->db->order_by("hasil",'DESC');
         $query = $this->db->get();
         return $query;
