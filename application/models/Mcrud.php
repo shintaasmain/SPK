@@ -314,6 +314,16 @@ class Mcrud extends CI_Model{
 		$hasil = $this->db->get();
 		return $hasil;
 	}
+
+    public function cek_penilaian() {
+		$where = $this->session->userdata('id_admin');
+		$this->db->select('*');
+		$this->db->from('penilaian');
+        $this->db->where('id_admin', $where);
+
+		$hasil = $this->db->get();
+		return $hasil;
+	}
 }
 
 ?>

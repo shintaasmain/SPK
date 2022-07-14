@@ -65,23 +65,46 @@ class Penilaian extends CI_Controller {
 	}
 
 	public function post(){
+
+		$cek = $this->Mcrud->cek_penilaian()->result();
+			if(count($cek)==0) {
+				$hasil = $this->input->post('hasil');
+				$id = $this->input->post('jumlah');
+				$id_alternatif = $this->input->post('id_alternatif');
 		
-		$hasil = $this->input->post('hasil');
-		$id = $this->input->post('jumlah');
-		$id_alternatif = $this->input->post('id_alternatif');
+
+
+				for ($i=0; $i<$id; $i++){
+				$data = array(
+				'id_admin'=> $this->session->userdata('id_admin'),
+				'id_alternatif' =>$id_alternatif[$i],
+				'hasil' =>$hasil[$i]
+				);
+		
+				$this->db->insert('penilaian',$data);
+				}
+				redirect('penilaian/');
+			} elseif(count($cek)>=1) {
+				$hasil = $this->input->post('hasil');
+				$id = $this->input->post('jumlah');
+				$id_alternatif = $this->input->post('id_alternatif');
 		
 
 
-		for ($i=0; $i<$id; $i++){
-		$data = array(
-			'id_admin'=> $this->session->userdata('id_admin'),
-			'id_alternatif' =>$id_alternatif[$i],
-			'hasil' =>$hasil[$i]
-		);
-		//var_dump($data);
+				$where = array('id_admin' => $this->session->userdata('id_admin'));
+				$this->db->delete('penilaian', $where);
+			
+				for ($i=0; $i<$id; $i++){
+				$data = array(
+					'id_admin'=> $this->session->userdata('id_admin'),
+					'id_alternatif' =>$id_alternatif[$i],
+					'hasil' =>$hasil[$i]
+				);
+				
+				$this->db->insert('penilaian',$data);
+			}
 
-		$this->db->insert('penilaian',$data);
-		}
-		redirect('penilaian/');
-	 }
+				redirect('penilaian/');
+			}
+	}
 }
