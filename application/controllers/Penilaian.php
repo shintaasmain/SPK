@@ -41,6 +41,10 @@ class Penilaian extends CI_Controller {
 		$data['bobotC4']=$this->Mcrud->getBobotC4()->result();
 		$data['bobotC5']=$this->Mcrud->getBobotC5()->result();
 
+		$data['total_data'] = $this->Mcrud->hitungData();
+		$data['hasil_rangking'] = $this->Mcrud->hitungRangking()->result();
+		$data['keputusan'] = $this->Mcrud->keputusan()->result();
+
 		
 		$data['alternatif']=$this->Mcrud->get_detailalternatif()->result();
 		$this->template->load('layout_admin', 'admin/penilaian/index',$data);
@@ -59,4 +63,25 @@ class Penilaian extends CI_Controller {
 		$this->template->load('layout_admin', 'admin/penilaian/',$data);
 		
 	}
+
+	public function post(){
+		
+		$hasil = $this->input->post('hasil');
+		$id = $this->input->post('jumlah');
+		$id_alternatif = $this->input->post('id_alternatif');
+		
+
+
+		for ($i=0; $i<$id; $i++){
+		$data = array(
+			'id_admin'=> $this->session->userdata('id_admin'),
+			'id_alternatif' =>$id_alternatif[$i],
+			'hasil' =>$hasil[$i]
+		);
+		//var_dump($data);
+
+		$this->db->insert('penilaian',$data);
+		}
+		redirect('penilaian/');
+	 }
 }

@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Matrik Ternormalisasi (R)</h2>
+            <h2 class="section-title">Perhitungan Matrik Ternormalisasi (R)</h2>
             <!-- KRITERIA -->
             <div class="row">
               <div class="col-12">
@@ -90,7 +90,7 @@
                 <div class="card">
                   <div class="card-body">
      				<div class="table-responsive">
-                    <h4>Kriteria C1</h4>
+                    <h5>Kriteria C1</h5>
                     <?php foreach ($kriteriaC1 as $k) {?>
      								<h><?= $k->jenis;?> <?php } ?> </h>  = <?php if ($k -> jenis == 'benefit'){ ?> <?php foreach ($max1 as $max) { ?> <td><?= $max->C1 ?></td> <?php } ?> <?php } else if($k -> jenis == 'cost') { ?> <?php foreach ($min1 as $min) { ?> <td><?= $min->C1 ?></td> <?php } ?> <?php } ?> 
      								<table class="table table-striped table-md">
@@ -130,7 +130,7 @@
                 <div class="card">
                   <div class="card-body">
      				<div class="table-responsive">
-                    <h4>Kriteria C2</h4>
+                    <h5>Kriteria C2</h5>
                     <?php foreach ($kriteriaC2 as $k) {?>
      								<h><?= $k->jenis;?> <?php } ?> </h>  = <?php if ($k -> jenis == 'benefit'){ ?> <?php foreach ($max2 as $max) { ?> <td><?= $max->C2 ?></td> <?php } ?> <?php } else if($k -> jenis == 'cost') { ?> <?php foreach ($min2 as $min) { ?> <td><?= $min->C2 ?></td> <?php } ?> <?php } ?> 
      								<table class="table table-striped table-md">
@@ -170,7 +170,7 @@
                 <div class="card">
                   <div class="card-body">
      				<div class="table-responsive">
-                    <h4>Kriteria C3</h4>
+                    <h5>Kriteria C3</h5>
                     <?php foreach ($kriteriaC3 as $k) {?>
      				<h><?= $k->jenis;?> <?php } ?> </h>  = <?php if ($k -> jenis == 'benefit'){ ?> <?php foreach ($max3 as $max) { ?> <td><?= $max->C3 ?></td> <?php } ?> <?php } else if($k -> jenis == 'cost') { ?> <?php foreach ($min3 as $min) { ?> <td><?= $min->C3 ?></td> <?php } ?> <?php } ?> 
      				<table class="table table-striped table-md">
@@ -210,7 +210,7 @@
                 <div class="card">
                   <div class="card-body">
      				<div class="table-responsive">
-                    <h4>Kriteria C4</h4>
+                    <h5>Kriteria C4</h5>
                     <?php foreach ($kriteriaC4 as $k) {?>
      								<h><?= $k->jenis;?> <?php } ?> </h>  = <?php if ($k -> jenis == 'benefit'){ ?> <?php foreach ($max4 as $max) { ?> <td><?= $max->C4 ?></td> <?php } ?> <?php } else if($k -> jenis == 'cost') { ?> <?php foreach ($min4 as $min) { ?> <td><?= $min->C4 ?></td> <?php } ?> <?php } ?> 
      								<table class="table table-striped table-md">
@@ -250,7 +250,7 @@
                 <div class="card">
                   <div class="card-body">
      				<div class="table-responsive">
-                    <h4>Kriteria C5</h4>
+                    <h5>Kriteria C5</h5>
                     <?php foreach ($kriteriaC5 as $k) {?>
      								<h><?= $k->jenis;?> <?php } ?> </h>  = <?php if ($k -> jenis == 'benefit'){ ?> <?php foreach ($max5 as $max) { ?> <td><?= $max->C5 ?></td> <?php } ?> <?php } else if($k -> jenis == 'cost') { ?> <?php foreach ($min5 as $min) { ?> <td><?= $min->C5 ?></td> <?php } ?> <?php } ?> 
      								<table class="table table-striped table-md">
@@ -289,6 +289,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
+					<h5>Matrik Ternormalisasi (R)</h5>
      				<div class="table-responsive">
      								<table class="table table-striped table-md">
 										<?php foreach ($alternatif as $item) { ?>
@@ -352,10 +353,11 @@
                 </div>
               </div>
             </div>
-
+			<h2 class="section-title">Hitung Perangkingan</h2>
 				<div class="row">
               <div class="col-12">
                 <div class="card">
+				<form action="<?= base_url('penilaian/post') ?>" method="post" id="simpan">
                   <div class="card-body">
      				<div class="table-responsive">
      								<table class="table table-striped table-md">
@@ -454,26 +456,81 @@
 													<?php } ?>
 													<?php } ?>
 												<?php } ?>
-
+												<td> <input type="hidden" name="id_alternatif[]" value="<?= $item->id_alternatif; ?> ">
+												<?php for ($i=0; $i<1; $i++) { ?> 
 												<?php if ($k-> jenis == 'benefit') {?>
-													
-													<td><?= $rangking1+$rangking3+$rangking5+$rangking7+$rangking9 ?>
+													<?php $rangkingbenefit = $rangking1+$rangking3+$rangking5+$rangking7+$rangking9;?>
+													<td> <input class="form-control" name="hasil[]" value="<?= $rangkingbenefit; ?> " readonly>
 													</td>
 												<?php } else if ($k -> jenis == 'cost') {?> 
-													<td><?= $rangking2+$rangking4+$rangking6+$rangking8+$rangking10 ?>
+													<?php $rangkingcost = $rangking2+$rangking4+$rangking6+$rangking8+$rangking10;?>
+													<td><input name="hasil[]" value="<?= $rangkingcost; ?> " readonly>
 													</td>
+												<?php } ?>
 												<?php } ?>
 											</tr>
 											<?php } ?>
+											
+											<input type="hidden" name="jumlah" value="<?=$total_data?>">
+     								</table>
+									 <div class="form-group">
+                                    <button type="submit" class="btn btn-primary  btn-sm submit-reset">Simpan </button>                                                
+                                </div>
+     							</div>
+     						</div>
+                </div>
+				</form>
+              </div>
+            </div>
+
+			
+			<!-- HASIL PERANGKINGAN -->
+			<h2 class="section-title">Perangkingan</h2>
+			<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+     				<div class="table-responsive">
+                   	<table class="table table-striped table-md">
+										<thead>
+											<tr>
+												<th>Rangking</th>
+												<th>Alternatif</th>
+												<th>Nilai</th>
+     										<tr>
+										</thead>
+										<tbody>
+										<?php 
+										$no=1;
+										foreach ($hasil_rangking as $item) { ?>
+											<tr>
+												<td><?= $no++ ?></td>
+												<td><?= $item->nama_alternatif ?></td>
+												<td><?= $item->hasil ?></td>
+												<?php } ?>
+											</tr>
+										</tbody>
      								</table>
      							</div>
      						</div>
                 </div>
               </div>
             </div>
+			
+			<!-- KESIMPULAN -->
+			<h2 class="section-title">Keputusan</h2>
+			<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+							
+Dari beberapa alternatif yang telah Anda masukkan dapat diambil sebuah keputusan perguruan tinggi terbaik adalah <b> <?php foreach ($keputusan as $K) {?> <?= $K->nama_alternatif ?> <?php }?> </b>
 
-
-
+							
+     				 
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -483,6 +540,27 @@
     $('#btn-delete').attr('href', url);
     $('#deleteModal').modal();
   }
+</script>
+
+$(document).ready(function(){
+	  
+})
+<script>
+	function tambah(){
+		$.ajax({
+			url:$("#simpan").attr(action),
+			type:'post',
+			cache:false,
+			dataType:"json",
+			data:$("#simpan").serialize(),
+			success:function($data){
+				if (data.success == true){
+					$('.input1').val('');
+					$('.input2').val('');
+				}
+			}
+		});
+	}
 </script>
 <!-- Hapus MODAL -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -502,4 +580,3 @@
     </div>
   </div>
 </div>
-

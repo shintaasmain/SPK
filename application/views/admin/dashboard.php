@@ -11,11 +11,13 @@
                   <div class="card-header">
                     <h4>Total Kriteria</h4>
                   </div>
+                  <?php foreach ($jml_kriteria as $item) {?>  
                   <div class="card-body">
-                    10
+                  <?= $item->total_kriteria ?>
                   </div>
+                  <?php }?>
                   <div class="card-footer float-right">
-                  <a href="#" class="badge badge-primary">View</a>
+                  <a href="<?= base_url('kriteria') ?>" class="badge badge-primary">View</a>
                   </div>
                 </div>
               </div>
@@ -29,11 +31,13 @@
                   <div class="card-header">
                     <h4>Total Alternatif</h4>
                   </div>
+                  <?php foreach ($jml_alternatif as $item) {?>  
                   <div class="card-body">
-                    42
+                  <?= $item->total_alternatif ?>
                   </div>
+                  <?php }?>
                   <div class="card-footer float-right">
-                  <a href="#" class="badge badge-warning">View</a>
+                  <a href="<?= base_url('alternatif') ?>" class="badge badge-warning">View</a>
                   </div>
                 </div>
               </div>
@@ -48,10 +52,10 @@
                     <h4>Penilaian</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    hasil keputusan
                   </div>
                   <div class="card-footer float-right">
-                  <a href="#" class="badge badge-success">View</a>
+                  <a href="<?= base_url('penilaian') ?>" class="badge badge-success">View</a>
                   </div>
                 </div>
               </div>

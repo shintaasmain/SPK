@@ -49,11 +49,13 @@ class Kriteria extends CI_Controller {
  		}
 		else
 		{
-		$kodekriteria = $this->input->post('kode_kriteria');
-		$kriteria = $this->input->post('nama_kriteria');
-		$bobot = $this->input->post('bobot');
-		$jenis = $this->input->post('jenis');
-		$data = array(
+			$id_admin = $this->session->userdata('id_admin');
+			$kodekriteria = $this->input->post('kode_kriteria');
+			$kriteria = $this->input->post('nama_kriteria');
+			$bobot = $this->input->post('bobot');
+			$jenis = $this->input->post('jenis');
+			$data = array(
+			'id_admin' => $id_admin,
 			'kode_kriteria' => $kodekriteria,
 			'nama_kriteria' => $kriteria,
 			'bobot' => $bobot,

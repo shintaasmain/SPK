@@ -35,8 +35,10 @@ class Alternatif extends CI_Controller {
 	//  SIMPAN ALTERNATIF
 	public function simpan_alternatif(){
 
+		$id_admin = $this->session->userdata('id_admin');
 		$nama_alternatif = $this->input->post('nama_alternatif');
 		$data = array(
+			'id_admin' => $id_admin,
 			'nama_alternatif' => $nama_alternatif,
 		);
 		$id_alternatif = $this->Mcrud->insert_alternatif($data);

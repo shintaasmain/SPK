@@ -114,7 +114,7 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">Stisla</a>
+            <a href="index.html">SPK</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">St</a>
@@ -124,7 +124,6 @@
               <li class="<?php echo $this->uri->segment(1) == 'kategori' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('kriteria');?>"><i class="fas fa-th"></i> <span>Kriteria</span></a></li>
               <li class="<?php echo $this->uri->segment(1) == 'kota' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('alternatif');?>"><i class="fa fa-city"></i></i> <span>Alternatif</span></a></li>
               <li class="<?php echo $this->uri->segment(1) == 'kurir' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('penilaian');?>"><i class="fa fa-truck"></i><span>Penilaian</span></a></li>
-              <li class="<?php echo $this->uri->segment(1) == 'member' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo site_url('user');?>" ><i class="fa fa-user"></i><span>User</span></a></li>
               
         </aside>
       </div>

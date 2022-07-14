@@ -3,7 +3,11 @@
 class Mcrud extends CI_Model{
     
     public function get_all_data($tabel){
-        $q=$this->db->get($tabel);
+        $where = $this->session->userdata('id_admin');
+        $this->db->select('*');
+        $this->db->from($tabel);
+        $this->db->where('id_admin', $where);
+        $q=$this->db->get();
         return $q;
     }
 
@@ -47,9 +51,11 @@ class Mcrud extends CI_Model{
 
     public function get_detailalternatif()
 	{
+    $where = $this->session->userdata('id_admin');
       $this->db->select('alternatif.*, detail_alternatif.*');
       $this->db->from('alternatif');    
-      $this->db->join('detail_alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif', 'LEFT');      
+      $this->db->join('detail_alternatif','alternatif.id_alternatif = detail_alternatif.id_alternatif', 'LEFT');     
+      $this->db->where('id_admin', $where);
       $this->db->group_by('alternatif.id_alternatif');  
 
       $query = $this->db->get();
@@ -247,6 +253,63 @@ class Mcrud extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+    public function hitungData()
+    {
+        $query = $this->db->get('alternatif');
+        if($query->num_rows()>0)
+        {
+          return $query->num_rows();
+        }
+        else
+        {
+          return 0;
+        }
+    }
+
+    public function hitungRangking()
+    {
+
+			$this->db->select('*,penilaian.hasil,alternatif.nama_alternatif');
+            $this->db->from('penilaian');
+            $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
+            //$this->db->group_by('t.town_id');
+            $this->db->order_by("hasil",'DESC');
+            $query = $this->db->get();
+            return $query;
+
+    }
+
+    public function keputusan()
+    {
+        $this->db->select('alternatif.nama_alternatif');
+        $this->db->from('penilaian');
+        $this->db->join('alternatif','alternatif.id_alternatif = penilaian.id_alternatif');
+        //$this->db->group_by('t.town_id');
+        $this->db->limit(1);
+        $this->db->order_by("hasil",'DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function totalKriteria() {
+		$where = $this->session->userdata('id_admin');
+		$this->db->select('COUNT(id_kriteria) as total_kriteria');
+		$this->db->from('kriteria');
+        $this->db->where('id_admin', $where);
+
+		$hasil = $this->db->get();
+		return $hasil;
+	}
+
+    public function totalAlternatif() {
+		$where = $this->session->userdata('id_admin');
+		$this->db->select('COUNT(id_alternatif) as total_alternatif');
+		$this->db->from('alternatif');
+        $this->db->where('id_admin', $where);
+
+		$hasil = $this->db->get();
+		return $hasil;
+	}
 }
 
 ?>
