@@ -11,7 +11,7 @@
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Matrik Keputusan (X)</h2>
+            <h2 class="section-title">Matriks Keputusan (X)</h2>
             <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Perhitungan Matrik Ternormalisasi (R)</h2>
+            <h2 class="section-title">Perhitungan Matriks Ternormalisasi (R)</h2>
             <!-- KRITERIA -->
             <div class="row">
               <div class="col-12">
@@ -289,7 +289,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-					<h5>Matrik Ternormalisasi (R)</h5>
+					<h5>Matriks Ternormalisasi (R)</h5>
      				<div class="table-responsive">
      								<table class="table table-striped table-md">
 										<?php foreach ($alternatif as $item) { ?>
