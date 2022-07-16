@@ -106,4 +106,12 @@ class Penilaian extends CI_Controller {
 				redirect('penilaian/');
 			}
 	}
+
+	public function reset_penilaian()
+	{
+			$where = $this->session->userdata('id_admin');
+			$this->db->where('id_admin', $where);
+			$this->db->delete('penilaian');
+			redirect('penilaian');
+	}
 }

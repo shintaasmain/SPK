@@ -255,7 +255,12 @@ class Mcrud extends CI_Model{
     }
     public function hitungData()
     {
-        $query = $this->db->get('alternatif');
+        $where = $this->session->userdata('id_admin');
+        $this->db->select('*');
+        $this->db->from('alternatif');
+        $this->db->where('id_admin', $where);
+        $query = $this->db->get();
+
         if($query->num_rows()>0)
         {
           return $query->num_rows();
@@ -319,6 +324,17 @@ class Mcrud extends CI_Model{
 		$where = $this->session->userdata('id_admin');
 		$this->db->select('*');
 		$this->db->from('penilaian');
+        $this->db->where('id_admin', $where);
+
+		$hasil = $this->db->get();
+		return $hasil;
+	}
+
+    public function cek_alternatif($id) {
+		$where = $this->session->userdata('id_admin');
+		$this->db->select('*');
+		$this->db->from('penilaian');
+        $this->db->where('id_alternatif', $id);
         $this->db->where('id_admin', $where);
 
 		$hasil = $this->db->get();

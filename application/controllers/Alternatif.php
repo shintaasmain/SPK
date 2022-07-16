@@ -113,10 +113,19 @@ class Alternatif extends CI_Controller {
 
 	public function hapus($id)
 	{
-		$where = array('id_alternatif' => $id);
-		$this->Mcrud->delete($where,'detail_alternatif');
-		$this->Mcrud->delete($where,'alternatif');
-		redirect('alternatif');
+		$cek = $this->Mcrud->cek_alternatif($id)->result();
+
+		if(count($cek)==0) {
+			$where = array('id_alternatif' => $id);
+			$this->Mcrud->delete($where,'detail_alternatif');
+			$this->Mcrud->delete($where,'alternatif');
+			redirect('alternatif');
+
+		} else if (count($cek)>=1) {
+			$this->session->set_flashdata('error', 'Data Alternatif sedang digunakan pada Peniliaian !');
+			redirect('alternatif');
+		}
+		
 	}
 	
 }
